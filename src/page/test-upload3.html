@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+    <script>
+      window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+      window.requestFileSystem(window.TEMPORARY, 5*1024*1024, initFS, errorHandler);
+
+      function initFS(fs){
+        alert("Welcome to Filesystem! It's showtime :)"); // Just to check if everything is OK :)
+        // place the functions you will learn bellow here
+      }
+
+      function errorHandler(){
+        console.log('An error occured');
+      }     
+    </script>
+  </body>
+</html>
