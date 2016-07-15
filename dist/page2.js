@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(188);
+	module.exports = __webpack_require__(189);
 
 
 /***/ },
@@ -21596,11 +21596,11 @@
 	    return React.createElement(
 	      "div",
 	      { className: "search" },
-	      React.createElement(
+	      this.props.csvUrl ? React.createElement(
 	        "a",
 	        { href: this.props.csvUrl },
 	        React.createElement("span", { className: "download" })
-	      ),
+	      ) : "",
 	      React.createElement("span", { className: "date-icon" }),
 	      React.createElement("input", { type: "text", id: "beginDate", onFocus: this.handleFocus, readOnly: "readonly", ref: "beginDate", value: _commonMethod2.default.getFormDate(this.props.beginDate) }),
 	      React.createElement(
@@ -21713,6 +21713,74 @@
 /* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var Header = React.createClass({
+	  displayName: "Header",
+
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "header" },
+	      React.createElement(
+	        "div",
+	        { className: "title" },
+	        React.createElement(
+	          "span",
+	          { id: "title" },
+	          "SENSETIME考勤统计"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "menu" },
+	        React.createElement(
+	          "ul",
+	          null,
+	          React.createElement(
+	            "li",
+	            null,
+	            React.createElement(
+	              "a",
+	              { href: "attendance.html" },
+	              React.createElement("div", { className: "menu-icon icon-tubiao" }),
+	              React.createElement(
+	                "span",
+	                null,
+	                "考勤详情"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "li",
+	            null,
+	            React.createElement(
+	              "a",
+	              { href: "chart.html?beginDate=" + this.props.beginDate + "&endDate=" + this.props.endDate },
+	              React.createElement("div", { className: "menu-icon icon-tongji" }),
+	              React.createElement(
+	                "span",
+	                null,
+	                "统计图"
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Header;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(React, ReactDOM) {"use strict";
 
 	__webpack_require__(173);
@@ -21733,15 +21801,23 @@
 
 	var _pagination2 = _interopRequireDefault(_pagination);
 
-	var _single_table_data = __webpack_require__(189);
+	var _single_table_data = __webpack_require__(190);
 
 	var _single_table_data2 = _interopRequireDefault(_single_table_data);
 
-	var _info = __webpack_require__(190);
+	var _info = __webpack_require__(191);
 
 	var _info2 = _interopRequireDefault(_info);
 
+	var _header = __webpack_require__(188);
+
+	var _header2 = _interopRequireDefault(_header);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import React from 'react'
+	// import ReactDOM from 'react-dom'
+
 
 	var Content = React.createClass({
 	  displayName: "Content",
@@ -21772,20 +21848,19 @@
 	    return React.createElement(
 	      "div",
 	      null,
+	      React.createElement(_header2.default, { beginDate: this.state.beginDate, endDate: this.state.endDate }),
 	      React.createElement(_search2.default, { clickCallBack: this.onClickSearch, csvUrl: this.props.host + this.props.generate_csv + "?companyID=" + this.props.companyID + "&beginDate=" + this.state.beginDate + "&endDate=" + this.state.endDate + "&userID=" + this.state.userID, beginDate: this.state.beginDate, endDate: this.state.endDate }),
 	      this.state.data ? React.createElement(_info2.default, { name: this.state.data.name, workTime: this.state.data.durationAll / 3600, durationTime: this.state.data.countAll }) : React.createElement(_info2.default, null),
 	      React.createElement(_single_table_data2.default, { page: this.state.page, data: this.state.data, pageNum: this.props.pageNum }),
 	      React.createElement(_pagination2.default, { page: this.state.page, callbackParent: this.onChildChanged, count: this.state.count })
 	    );
 	  }
-	}); // import React from 'react'
-	// import ReactDOM from 'react-dom'
-
+	});
 	ReactDOM.render(React.createElement(Content, null), document.getElementById("content"));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(34)))
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
@@ -21931,7 +22006,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {"use strict";

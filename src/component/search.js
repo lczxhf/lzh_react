@@ -18,7 +18,10 @@ let Search = React.createClass({
   render: function(){
     return (
     <div className="search">
-        <a href={this.props.csvUrl}><span className="download"></span></a>
+        {
+
+          this.props.csvUrl ? <a href={this.props.csvUrl}><span className="download"></span></a> : ""
+        }
         <span className="date-icon"></span>
         <input type="text" id="beginDate"  onFocus={this.handleFocus} readOnly="readonly" ref="beginDate" value={Common.getFormDate(this.props.beginDate)}/>
         <span>---</span>

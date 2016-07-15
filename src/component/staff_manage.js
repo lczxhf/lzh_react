@@ -7,6 +7,7 @@ import Search from "./search.js"
 import Pagination from "./pagination.js"
 import SingleTableData from "./single_table_data.js"
 import Info from "./info.js";
+import Header from "./header.js"
 
 let Content = React.createClass({
   getInitialState: function(){
@@ -34,6 +35,7 @@ let Content = React.createClass({
   render: function(){
     return(
       <div>
+        <Header beginDate={this.state.beginDate} endDate={this.state.endDate}/>
         <Search clickCallBack={this.onClickSearch}  csvUrl={this.props.host+this.props.generate_csv+"?companyID="+this.props.companyID+"&beginDate="+this.state.beginDate+"&endDate="+this.state.endDate+"&userID="+this.state.userID} beginDate={this.state.beginDate} endDate={this.state.endDate}/>
         {
            this.state.data ? <Info name={this.state.data.name} workTime={this.state.data.durationAll/3600} durationTime={this.state.data.countAll}/> : <Info />
