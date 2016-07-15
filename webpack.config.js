@@ -13,19 +13,19 @@ module.exports = {
 	output: {
 		path: path.join(__dirname,"dist"),
 		filename: '[name].js',
-		publicPath: '/dist/'
+		publicPath: '/rack-assets/image/'
 	},
 	plugins: [
 		// ignoreFiles,
 		new webpack.ProvidePlugin({
 			React:'react',
 			ReactDOM: 'react-dom'
-		})
-		// new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   }
-    // })
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
 		// new CommonsChunkPlugin('init.js'),
 		// new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'common.js',["vendor"])
 	],

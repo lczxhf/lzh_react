@@ -29,7 +29,7 @@ let Content = React.createClass({
   },
   formatOption: function(){
     var options = {
-              responsive: true,
+              responsive: false,
               hover:{
                 mode: 'label'
               },
@@ -106,6 +106,8 @@ let Content = React.createClass({
         window.chart.update();
       }
       var ctx = this.refs.my_canvas.getContext("2d");
+      this.refs.my_canvas.setAttribute("width",window.document.body.clientWidth)
+      this.refs.my_canvas.setAttribute("height",window.document.body.clientHeight)
       window.chart = new Chart(ctx,{type:this.state.type,data:this.state.data,options:this.state.options})
   },
   render: function(){
